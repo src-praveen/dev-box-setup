@@ -4,12 +4,17 @@
   copy:
     src: "{{ ECLIPSE_LOCATION }}"
     dest: "{{ ECLIPSE_FOLDER_EXTRACT_LOCATION }}"
-    mode: "0755"
+    owner: "{{ user_idendity }}"
+    group: "{{ user_idendity }}"
+    mode: "0777"
 - name: "Extracting the {{ ECLIPSE_VERSION }} files"
   unarchive:
     src: "{{ ECLIPSE_FOLDER_EXTRACT_LOCATION }}"
     dest: "{{ SW_TOOLS_LOCATION }}"
     remote_src: True
+    owner: "{{ user_idendity }}"
+    group: "{{ user_idendity }}"
+    mode: "0777"
 - name: "Deleting the {{ ECLIPSE_VERSION }} Zip file"
   file:
     path: "{{ ECLIPSE_FOLDER_EXTRACT_LOCATION }}"

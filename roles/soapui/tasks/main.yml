@@ -4,12 +4,17 @@
   copy:
     src: "{{ SOAPUI_LOCATION }}"
     dest: "{{ SOAPUI_FOLDER_EXTRACT_LOCATION }}"
-    mode: "0755"
+    owner: "{{ user_idendity }}"
+    group: "{{ user_idendity }}"
+    mode: "0777"
 - name: "Extracting the {{ SOAPUI_VERSION }} files"
   unarchive:
     src: "{{ SOAPUI_FOLDER_EXTRACT_LOCATION }}"
     dest: "{{ SW_TOOLS_LOCATION }}"
     remote_src: True
+    owner: "{{ user_idendity }}"
+    group: "{{ user_idendity }}"
+    mode: "0777"
 - name: "Deleting the {{ SOAPUI_VERSION }} Zip file"
   file:
     path: "{{ SOAPUI_FOLDER_EXTRACT_LOCATION }}"

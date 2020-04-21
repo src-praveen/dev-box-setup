@@ -4,12 +4,17 @@
   copy:
     src: "{{ SQL_DEVELOPER_LOCATION }}"
     dest: "{{ SQL_DEVELOPER_FOLDER_EXTRACT_LOCATION }}"
-    mode: "0755"
+    owner: "{{ user_idendity }}"
+    group: "{{ user_idendity }}"
+    mode: "0777"
 - name: "Extracting the {{ SQL_DEVELOPER_VERSION }} files"
   unarchive:
     src: "{{ SQL_DEVELOPER_FOLDER_EXTRACT_LOCATION }}"
     dest: "{{ SW_TOOLS_LOCATION }}"
     remote_src: True
+    owner: "{{ user_idendity }}"
+    group: "{{ user_idendity }}"
+    mode: "0777"
 - name: "Deleting the {{ SQL_DEVELOPER_VERSION }} Zip file"
   file:
     path: "{{ SQL_DEVELOPER_FOLDER_EXTRACT_LOCATION }}"

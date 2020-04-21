@@ -3,4 +3,5 @@
 - name: Installing {{ CLIQ_VERSION }} Messanger
   apt:
     deb: "{{ CLIQ_LOCATION }}"
+    state: present
     update_cache: yes

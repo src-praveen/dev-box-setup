@@ -4,12 +4,17 @@
   copy:
     src: "{{ MVN_LOCATION }}"
     dest: "{{ MVN_FOLDER_EXTRACT_LOCATION }}"
-    mode: "0755"
+    owner: "{{ user_idendity }}"
+    group: "{{ user_idendity }}"
+    mode: "0777"
 - name: "Extracting the {{ MVN_VERSION }} files"
   unarchive:
     src: "{{ MVN_FOLDER_EXTRACT_LOCATION }}"
     dest: "{{ SW_TOOLS_LOCATION }}"
     remote_src: True
+    owner: "{{ user_idendity }}"
+    group: "{{ user_idendity }}"
+    mode: "0777"
 - name: Check M2_HOME already set or not
   shell: grep -i "M2_HOME=" /etc/profile | cat
   register: m2_home

@@ -4,12 +4,17 @@
   copy:
     src: "{{ JD_GUI_LOCATION }}"
     dest: "{{ JD_GUI_TEMP_EXTRACT_LOCATION }}"
-    mode: "0755"
+    owner: "{{ user_idendity }}"
+    group: "{{ user_idendity }}"
+    mode: "0777"
 - name: "Extracting the {{ JD_GUI_VERSION }} files"
   unarchive:
     src: "{{ JD_GUI_TEMP_EXTRACT_LOCATION }}"
     dest: "{{ SW_TOOLS_LOCATION }}"
     remote_src: True
+    owner: "{{ user_idendity }}"
+    group: "{{ user_idendity }}"
+    mode: "0777"
 - name: "Deleting the {{ JD_GUI_VERSION }} Zip file"
   file:
     path: "{{ JD_GUI_TEMP_EXTRACT_LOCATION }}"

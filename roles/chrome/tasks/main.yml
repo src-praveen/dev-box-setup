@@ -2,6 +2,6 @@
 # tasks file for chrome
 - name: Installing Google Chrome stable
   apt:
-    deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    state: latest
+    deb: "{{ CHROME_LOCATION }}"
+    state: present
     update_cache: yes

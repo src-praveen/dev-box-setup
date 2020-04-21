@@ -14,3 +14,7 @@
     - postman
     - sqldeveloper
     - tomcat
+# - name: Reboot Initiated
+#   reboot:
+#     msg: ====== Your System will Reboot in T-10 Sec ======
+#     reboot_timeout: 10

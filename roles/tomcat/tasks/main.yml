@@ -4,9 +4,14 @@
   file:
     path: "{{ SW_TOOLS_LOCATION }}/{{ TOMCAT_VERSION }}"
     state: directory
-    mode: "0755"
-- name: "Installing Nodepad++"
+    owner: "{{ user_idendity }}"
+    group: "{{ user_idendity }}"
+    mode: "0777"
+- name: "Installing {{ TOMCAT_VERSION }}"
   unarchive:
     src: "{{ TOMCAT_LOCATION }}"
     dest: "{{ SW_TOOLS_LOCATION }}/{{ TOMCAT_VERSION }}"
     remote_src: True
+    owner: "{{ user_idendity }}"
+    group: "{{ user_idendity }}"
+    mode: "0777"

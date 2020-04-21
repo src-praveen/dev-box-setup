@@ -1,5 +1,7 @@
 ---
 # tasks file for prerequisites
+- debug:
+    msg: "Owner and Group level access to [ {{ user_idendity }} ]"
 - name: "Installing required packages"
   apt:
     pkg: "{{ item }}"
@@ -11,4 +13,6 @@
   file:
     path: "{{ SW_TOOLS_LOCATION }}"
     state: directory
-    mode: "0755"
+    owner: "{{ user_idendity }}"
+    group: "{{ user_idendity }}"
+    mode: "0777"

@@ -4,9 +4,14 @@
   file:
     path: "{{ SW_TOOLS_LOCATION }}/{{ NOTEPAD_VERSION }}"
     state: directory
-    mode: "0755"
+    owner: "{{ user_idendity }}"
+    group: "{{ user_idendity }}"
+    mode: "0777"
 - name: "Installing {{ NOTEPAD_VERSION }}"
   unarchive:
     src: "{{ NOTEPAD_LOCATION }}"
     dest: "{{ SW_TOOLS_LOCATION }}/{{ NOTEPAD_VERSION }}"
     remote_src: True
+    owner: "{{ user_idendity }}"
+    group: "{{ user_idendity }}"
+    mode: "0777"

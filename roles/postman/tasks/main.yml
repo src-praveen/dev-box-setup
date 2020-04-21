@@ -4,12 +4,17 @@
   copy:
     src: "{{ POSTMAN_LOCATION }}"
     dest: "{{ POSTMAN_FOLDER_EXTRACT_LOCATION }}"
-    mode: "0755"
+    owner: "{{ user_idendity }}"
+    group: "{{ user_idendity }}"
+    mode: "0777"
 - name: "Extracting the {{ POSTMAN_VERSION }} files"
   unarchive:
     src: "{{ POSTMAN_FOLDER_EXTRACT_LOCATION }}"
     dest: "{{ SW_TOOLS_LOCATION }}"
     remote_src: True
+    owner: "{{ user_idendity }}"
+    group: "{{ user_idendity }}"
+    mode: "0777"
 - name: "Deleting the {{ POSTMAN_VERSION }} Zip file"
   file:
     path: "{{ POSTMAN_FOLDER_EXTRACT_LOCATION }}"
