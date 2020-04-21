@@ -1,2 +1,50 @@
----
-# tasks file for java
+- debug:
+    msg:
+      - "Role JDK Version  {{ JDK_VERSION }} "
+      - "Role JDK Location [ {{ JDK_LOCATION }} ]"
+- name: Ensure jvm directory exists
+  file:
+    path: /usr/jvm
+    state: directory
+    mode: "0755"
+- name: Copy Zipped JDK from the master machine to hosts
+  copy:
+    src: "{{ JDK_LOCATION }}"
+    dest: "/usr/jvm/{{ JDK_VERSION }}.zip"
+    mode: "0755"
+- name: Extracting the JDK files
+  unarchive:
+    src: "/usr/jvm/{{ JDK_VERSION }}.zip"
+    dest: /usr/jvm/
+    remote_src: True
+- name: Setup default java version using alternative command
+  alternatives:
+    link: /usr/bin/java
+    name: java
+    path: "/usr/jvm/{{ JDK_VERSION }}/bin/java"
+- name: Check Java Home already set or not
+  shell: grep -i "JAVA_HOME=" /etc/profile | cat
+  register: java_home_grep
+- name: Print Java Home existance
+  debug:
+    var: java_home_grep.stdout
+- name: Setup JAVA_HOME
+  lineinfile:
+    path: /etc/profile
+    line: "export JAVA_HOME=/usr/jvm/{{ JDK_VERSION }}"
+  when: java_home_grep.stdout == ""
+- name: Check Java Path already set or not
+  shell: grep -i "JAVA_HOME/bin" /etc/profile | cat
+  register: java_home_path_grep
+- name: Printing Path variable
+  debug:
+    var: java_home_path_grep.stdout
+- name: Setup JAVA_HOME to the PATH
+  lineinfile:
+    path: /etc/profile
+    line: "export PATH=$PATH:$JAVA_HOME/bin"
+  when: java_home_path_grep.stdout == ""
+- name: Deleting the JDK Zip file
+  file:
+    path: "/usr/jvm/{{ JDK_VERSION }}.zip"
+    state: absent
