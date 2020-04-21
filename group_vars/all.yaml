@@ -1,0 +1,50 @@
+---
+# Role level variable can be override here
+
+SW_LOCATION_IN_MASTER: /Userdisk/Software/ansible_sw
+
+JDK_VERSION: jdk1.8.0_162
+JDK_LOCATION: "{{ SW_LOCATION_IN_MASTER }}/{{ JDK_VERSION }}.zip"
+
+# Cliq Version and .deb location in master serverless
+CLIQ_VERSION: cliq_1.4.5_amd64
+CLIQ_LOCATION: "{{ SW_LOCATION_IN_MASTER }}/{{ CLIQ_VERSION }}.deb"
+
+# Maven version and location
+MVN_VERSION: apache-maven-3.6.0
+MVN_LOCATION: "{{ SW_LOCATION_IN_MASTER }}/{{ MVN_VERSION }}.zip"
+
+# Eclipse
+ECLIPSE_VERSION: eclipse-jee-2020-03-R-incubation-linux-gtk-x86_64
+ECLIPSE_LOCATION: "{{ SW_LOCATION_IN_MASTER }}/{{ ECLIPSE_VERSION }}.tar.gz"
+
+#Filezilla
+FILEZILLA_VERSION: FileZilla3
+FILEZILLA_LOCATION: "{{ SW_LOCATION_IN_MASTER }}/{{ FILEZILLA_VERSION }}.zip"
+
+#Jd-Gui
+JD_GUI_VERSION: jd-gui
+JD_GUI_LOCATION: "{{ SW_LOCATION_IN_MASTER }}/{{ JD_GUI_VERSION }}.zip"
+
+#Notepad++
+NOTEPAD_VERSION: nodepad++
+NOTEPAD_LOCATION: https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v7.8.5/npp.7.8.5.bin.x64.zip
+
+#Postman
+POSTMAN_VERSION: Postman-linux-x64-7.22.1
+POSTMAN_LOCATION: "{{ SW_LOCATION_IN_MASTER }}/{{ POSTMAN_VERSION }}.tar.gz"
+
+#SoapUi
+SOAPUI_VERSION: SoapUI-5.4.0
+SOAPUI_LOCATION: "{{ SW_LOCATION_IN_MASTER }}/{{ SOAPUI_VERSION }}.zip"
+
+#Sqldeveloper
+SQL_DEVELOPER_VERSION: sqldeveloper
+SQL_DEVELOPER_LOCATION: "{{ SW_LOCATION_IN_MASTER }}/{{ SQL_DEVELOPER_VERSION }}.zip"
+
+#Tomcat
+TOMCAT_VERSION: tomcat-9
+TOMCAT_LOCATION: "http://apachemirror.wuchna.com/tomcat/tomcat-9/v9.0.34/bin/apache-tomcat-9.0.34.tar.gz"
+
+# Software folder location
+SW_TOOLS_LOCATION: /Userdisk/Softwares
