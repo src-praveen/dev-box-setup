@@ -1,4 +1,4 @@
 ---
 # defaults file for java
 JDK_VERSION: jdk1.8.0_162
-JDK_LOCATION: "/Userdisk/Software/ansible_sw/{{ JDK_VERSION }}.zip"
+JDK_LOCATION: "{{ SW_LOCATION_IN_MASTER }}/{{ JDK_VERSION }}.zip"

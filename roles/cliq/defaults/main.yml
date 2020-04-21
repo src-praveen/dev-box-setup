@@ -1,2 +1,4 @@
 ---
 # defaults file for cliqz
+CLIQ_VERSION: cliq_1.4.5_amd64
+CLIQ_LOCATION: "{{ SW_LOCATION_IN_MASTER }}/{{ CLIQ_VERSION }}.deb"

@@ -1,2 +1,16 @@
 ---
 # tasks file for jd-gui
+- name: "Installing {{ JD_GUI_VERSION }}"
+  copy:
+    src: "{{ JD_GUI_LOCATION }}"
+    dest: "{{ JD_GUI_TEMP_EXTRACT_LOCATION }}"
+    mode: "0755"
+- name: "Extracting the {{ JD_GUI_VERSION }} files"
+  unarchive:
+    src: "{{ JD_GUI_TEMP_EXTRACT_LOCATION }}"
+    dest: "{{ SW_TOOLS_LOCATION }}"
+    remote_src: True
+- name: "Deleting the {{ JD_GUI_VERSION }} Zip file"
+  file:
+    path: "{{ JD_GUI_TEMP_EXTRACT_LOCATION }}"
+    state: absent

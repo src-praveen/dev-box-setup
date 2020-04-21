@@ -1,2 +1,6 @@
 ---
 # defaults file for jd-gui
+JD_GUI_VERSION: jd-gui
+JD_GUI_LOCATION: "{{ SW_LOCATION_IN_MASTER }}/{{ JD_GUI_VERSION }}.zip"
+
+JD_GUI_TEMP_EXTRACT_LOCATION: "{{ SW_TOOLS_LOCATION }}/{{ JD_GUI_VERSION }}.zip"

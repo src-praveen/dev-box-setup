@@ -1,2 +1,39 @@
 ---
 # tasks file for maven
+- name: "Installing {{ MVN_VERSION }}"
+  copy:
+    src: "{{ MVN_LOCATION }}"
+    dest: "{{ MVN_FOLDER_EXTRACT_LOCATION }}"
+    mode: "0755"
+- name: "Extracting the {{ MVN_VERSION }} files"
+  unarchive:
+    src: "{{ MVN_FOLDER_EXTRACT_LOCATION }}"
+    dest: "{{ SW_TOOLS_LOCATION }}"
+    remote_src: True
+- name: Check M2_HOME already set or not
+  shell: grep -i "M2_HOME=" /etc/profile | cat
+  register: m2_home
+- name: Print Maven Home existance
+  debug:
+    var: m2_home.stdout
+- name: Setup M2_HOME
+  lineinfile:
+    path: /etc/profile
+    line: "export M2_HOME={{ SW_TOOLS_LOCATION }}/{{ MVN_VERSION }}"
+  when: m2_home.stdout == ""
+
+- name: Check Maven Path already set or not
+  shell: grep -i "M2_HOME/bin" /etc/profile | cat
+  register: m2_home_path
+- name: Printing Path variable
+  debug:
+    var: m2_home_path.stdout
+- name: Setup M2_HOME to the PATH
+  lineinfile:
+    path: /etc/profile
+    line: "export PATH=$PATH:$M2_HOME/bin"
+  when: m2_home_path.stdout == ""
+- name: "Deleting the {{ MVN_VERSION }} Zip file"
+  file:
+    path: "{{ MVN_FOLDER_EXTRACT_LOCATION }}"
+    state: absent

@@ -1,0 +1,14 @@
+---
+# tasks file for prerequisites
+- name: Installing [{{ itme }}]
+  apt:
+    name: "{{ itme }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - "{{ packages }}"
+- name: "Creating the Folder [ {{ SW_TOOLS_LOCATION }} ] to move tool from master"
+  file:
+    path: "{{ SW_TOOLS_LOCATION }}"
+    state: directory
+    mode: "0755"

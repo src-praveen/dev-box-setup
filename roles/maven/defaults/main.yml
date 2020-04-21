@@ -1,2 +1,6 @@
 ---
 # defaults file for maven
+MVN_VERSION: apache-maven-3.6.0
+MVN_LOCATION: "{{ SW_LOCATION_IN_MASTER }}/{{ MVN_VERSION }}.zip"
+
+MVN_FOLDER_EXTRACT_LOCATION: "{{ SW_TOOLS_LOCATION }}/{{ MVN_VERSION }}.zip"
