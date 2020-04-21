@@ -1,4 +1,6 @@
 ---
+# Role level variable can be override here
+
 
 SW_LOCATION_IN_MASTER: /Userdisk/Software/ansible_sw
 

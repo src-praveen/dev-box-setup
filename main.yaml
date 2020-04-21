@@ -1,7 +1,16 @@
-- name: Main Playbook
+- name: Main Playbook for Development box prepration
   hosts: all
   become: True
   roles:
     - prerequisites
+    - java
+    - chrome
+    - cliq
+    - filezilla
+    - eclipse
+    - maven
+    - soapui
     - notepad++
     - postman
+    - sqldeveloper
+    - tomcat
