@@ -1,2 +1,6 @@
 ---
 # defaults file for tomcat
+TOMCAT_VERSION: tomcat-9
+TOMCAT_LOCATION: "http://apachemirror.wuchna.com/tomcat/tomcat-9/v9.0.34/bin/apache-tomcat-9.0.34.tar.gz"
+
+TOMCAT_FOLDER_EXTRACT_LOCATION: "{{ SW_TOOLS_LOCATION }}/{{ SQL_DEVELOPER_VERSION }}.zip"

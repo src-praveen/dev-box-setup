@@ -1,2 +1,6 @@
 ---
 # defaults file for eclipse
+ECLIPSE_VERSION: eclipse-jee-2020-03-R-incubation-linux-gtk-x86_64
+ECLIPSE_LOCATION: "{{ SW_LOCATION_IN_MASTER }}/{{ ECLIPSE_VERSION }}.tar.gz"
+
+ECLIPSE_FOLDER_EXTRACT_LOCATION: "{{ SW_TOOLS_LOCATION }}/{{ ECLIPSE_VERSION }}.tar.gz"

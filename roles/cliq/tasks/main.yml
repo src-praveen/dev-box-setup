@@ -1,6 +1,6 @@
 ---
 # tasks file for cliqz
-- name: Installing Cliq Messanger
+- name: Installing {{ CLIQ_VERSION }} Messanger
   apt:
     deb: "{{ CLIQ_LOCATION }}"
     update_cache: yes

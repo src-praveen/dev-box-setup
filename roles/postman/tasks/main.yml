@@ -1,2 +1,16 @@
 ---
 # tasks file for postman
+- name: "Installing {{ POSTMAN_VERSION }}"
+  copy:
+    src: "{{ POSTMAN_LOCATION }}"
+    dest: "{{ POSTMAN_FOLDER_EXTRACT_LOCATION }}"
+    mode: "0755"
+- name: "Extracting the {{ POSTMAN_VERSION }} files"
+  unarchive:
+    src: "{{ POSTMAN_FOLDER_EXTRACT_LOCATION }}"
+    dest: "{{ SW_TOOLS_LOCATION }}"
+    remote_src: True
+- name: "Deleting the {{ POSTMAN_VERSION }} Zip file"
+  file:
+    path: "{{ POSTMAN_FOLDER_EXTRACT_LOCATION }}"
+    state: absent

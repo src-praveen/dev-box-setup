@@ -1,2 +1,12 @@
 ---
 # tasks file for notepad++
+- name: "Creating Folder {{ NOTEPAD_VERSION }}"
+  file:
+    path: "{{ SW_TOOLS_LOCATION }}/{{ NOTEPAD_VERSION }}"
+    state: directory
+    mode: "0755"
+- name: "Installing {{ NOTEPAD_VERSION }}"
+  unarchive:
+    src: "{{ NOTEPAD_LOCATION }}"
+    dest: "{{ SW_TOOLS_LOCATION }}/{{ NOTEPAD_VERSION }}"
+    remote_src: True

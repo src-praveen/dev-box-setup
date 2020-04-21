@@ -1,2 +1,12 @@
 ---
 # tasks file for tomcat
+- name: "Creating Folder {{ TOMCAT_VERSION }}"
+  file:
+    path: "{{ SW_TOOLS_LOCATION }}/{{ TOMCAT_VERSION }}"
+    state: directory
+    mode: "0755"
+- name: "Installing Nodepad++"
+  unarchive:
+    src: "{{ TOMCAT_LOCATION }}"
+    dest: "{{ SW_TOOLS_LOCATION }}/{{ TOMCAT_VERSION }}"
+    remote_src: True

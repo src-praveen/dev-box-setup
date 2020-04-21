@@ -1,2 +1,16 @@
 ---
 # tasks file for filezilla
+- name: "Installing {{ FILEZILLA_VERSION }}"
+  copy:
+    src: "{{ FILEZILLA_LOCATION }}"
+    dest: "{{ FILEZILLA_FOLDER_EXTRACT_LOCATION }}"
+    mode: "0755"
+- name: "Extracting the {{ FILEZILLA_VERSION }} files"
+  unarchive:
+    src: "{{ FILEZILLA_FOLDER_EXTRACT_LOCATION }}"
+    dest: "{{ SW_TOOLS_LOCATION }}"
+    remote_src: True
+- name: "Deleting the {{ FILEZILLA_VERSION }} Zip file"
+  file:
+    path: "{{ FILEZILLA_FOLDER_EXTRACT_LOCATION }}"
+    state: absent

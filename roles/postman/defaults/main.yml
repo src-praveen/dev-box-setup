@@ -1,2 +1,6 @@
 ---
 # defaults file for postman
+POSTMAN_VERSION: Postman-linux-x64-7.22.1
+POSTMAN_LOCATION: "{{ SW_LOCATION_IN_MASTER }}/{{ POSTMAN_VERSION }}.tar.gz"
+
+POSTMAN_FOLDER_EXTRACT_LOCATION: "{{ SW_TOOLS_LOCATION }}/{{ POSTMAN_VERSION }}.tar.gz"

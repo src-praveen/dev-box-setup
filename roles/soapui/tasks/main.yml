@@ -1,2 +1,16 @@
 ---
 # tasks file for soapui
+- name: "Installing {{ SOAPUI_VERSION }}"
+  copy:
+    src: "{{ SOAPUI_LOCATION }}"
+    dest: "{{ SOAPUI_FOLDER_EXTRACT_LOCATION }}"
+    mode: "0755"
+- name: "Extracting the {{ SOAPUI_VERSION }} files"
+  unarchive:
+    src: "{{ SOAPUI_FOLDER_EXTRACT_LOCATION }}"
+    dest: "{{ SW_TOOLS_LOCATION }}"
+    remote_src: True
+- name: "Deleting the {{ SOAPUI_VERSION }} Zip file"
+  file:
+    path: "{{ SOAPUI_FOLDER_EXTRACT_LOCATION }}"
+    state: absent

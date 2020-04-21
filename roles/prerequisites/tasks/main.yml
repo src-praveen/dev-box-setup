@@ -1,12 +1,12 @@
 ---
 # tasks file for prerequisites
-- name: Installing [{{ itme }}]
+- name: "Installing required packages"
   apt:
-    name: "{{ itme }}"
+    pkg: "{{ item }}"
     state: present
-    update_cache: yes
-  with_items:
-    - "{{ packages }}"
+    update_cache: True
+    install_recommends: True
+  loop: "{{ packages }}"
 - name: "Creating the Folder [ {{ SW_TOOLS_LOCATION }} ] to move tool from master"
   file:
     path: "{{ SW_TOOLS_LOCATION }}"
