@@ -2,10 +2,19 @@
 # tasks file for prerequisites
 - debug:
     msg: "Owner and Group level access to [ {{ user_idendity }} ]"
+- name: "Adding PPA Repository"
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+    validate_certs: False
+    update_cache: True
+  with_items:
+    - "{{ ppa_repositories }}"
+# if package has been broken in between run "apt --fix-broken install" as root
 - name: "Installing required packages"
   apt:
     pkg: "{{ item }}"
-    state: present
+    state: fixed
     update_cache: True
     install_recommends: True
   loop: "{{ packages }}"

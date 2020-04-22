@@ -1,5 +1,8 @@
 ---
 # defaults file for prerequisites
+ppa_repositories:
+  - ppa:notepadqq-team/notepadqq
+
 packages:
   - git
   - meld
