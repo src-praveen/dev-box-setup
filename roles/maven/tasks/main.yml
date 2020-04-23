@@ -15,29 +15,36 @@
     owner: "{{ user_idendity }}"
     group: "{{ user_idendity }}"
     mode: "0777"
-- name: Check M2_HOME already set or not
-  shell: grep -i "M2_HOME=" /etc/profile | cat
-  register: m2_home
-- name: Print Maven Home existance
-  debug:
-    var: m2_home.stdout
-- name: Setup M2_HOME
-  lineinfile:
-    path: /etc/profile
-    line: "export M2_HOME={{ SW_TOOLS_LOCATION }}/{{ MVN_VERSION }}"
-  when: m2_home.stdout == ""
+# - name: Check M2_HOME already set or not
+#   shell: grep -i "M2_HOME=" /etc/profile | cat
+#   register: m2_home
+# - name: Print Maven Home existance
+#   debug:
+#     var: m2_home.stdout
+# - name: Setup M2_HOME
+#   lineinfile:
+#     path: /etc/profile
+#     line: "export M2_HOME={{ SW_TOOLS_LOCATION }}/{{ MVN_VERSION }}"
+#   when: m2_home.stdout == ""
 
-- name: Check Maven Path already set or not
-  shell: grep -i "M2_HOME/bin" /etc/profile | cat
-  register: m2_home_path
-- name: Printing Path variable
-  debug:
-    var: m2_home_path.stdout
-- name: Setup M2_HOME to the PATH
-  lineinfile:
-    path: /etc/profile
-    line: "export PATH=$PATH:$M2_HOME/bin"
-  when: m2_home_path.stdout == ""
+# - name: Check Maven Path already set or not
+#   shell: grep -i "M2_HOME/bin" /etc/profile | cat
+#   register: m2_home_path
+# - name: Printing Path variable
+#   debug:
+#     var: m2_home_path.stdout
+# - name: Setup M2_HOME to the PATH
+#   lineinfile:
+#     path: /etc/profile
+#     line: "export PATH=$PATH:$M2_HOME/bin"
+#   when: m2_home_path.stdout == ""
+# Environment setup.
+- name: Set M2_HOME if configured.
+  template:
+    src: m2_home.sh.j2
+    dest: /etc/profile.d/m2_home.sh
+    mode: 0644
+  when: MVN_INSTALLATION_LOCATION is defined and MVN_INSTALLATION_LOCATION
 - name: "Deleting the {{ MVN_VERSION }} Zip file"
   file:
     path: "{{ MVN_FOLDER_EXTRACT_LOCATION }}"

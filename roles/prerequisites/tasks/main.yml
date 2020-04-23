@@ -2,6 +2,13 @@
 # tasks file for prerequisites
 - debug:
     msg: "Owner and Group level access to [ {{ user_idendity }} ]"
+- name: "Installing prerequisites system packages"
+  apt:
+    pkg: "{{ item }}"
+    state: present
+    update_cache: True
+    install_recommends: True
+  loop: "{{ prepreq_packages }}"
 - name: "Adding PPA Repository"
   apt_repository:
     repo: "{{ item }}"
@@ -14,7 +21,7 @@
 - name: "Installing required packages"
   apt:
     pkg: "{{ item }}"
-    state: fixed
+    state: present
     update_cache: True
     install_recommends: True
   loop: "{{ packages }}"

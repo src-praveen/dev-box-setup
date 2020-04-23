@@ -3,16 +3,16 @@
   become: True
   roles:
     - prerequisites
-    - java
-    - chrome
-    - cliq
-    - filezilla
-    - eclipse
+    # - java
+    # - chrome
+    # - cliq
+    # - filezilla
+    # - eclipse
     - maven
-    - soapui
-    - postman
-    - sqldeveloper
-    - tomcat
+    # - soapui
+    # - postman
+    # - sqldeveloper
+    # - tomcat
 # - name: Reboot Initiated
 #   reboot:
 #     msg: ====== Your System will Reboot in T-10 Sec ======

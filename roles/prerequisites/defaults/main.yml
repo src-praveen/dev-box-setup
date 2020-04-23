@@ -1,9 +1,12 @@
 ---
 # defaults file for prerequisites
+prepreq_packages:
+  - gnupg
 ppa_repositories:
   - ppa:notepadqq-team/notepadqq
 
 packages:
   - git
+  - unzip
   - meld
   - notepadqq
